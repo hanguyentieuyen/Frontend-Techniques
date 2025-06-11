@@ -1,4 +1,3 @@
-// tests/register-form.spec.ts
 import { test, expect } from "@playwright/test";
 
 test.describe("Register Form E2E", () => {

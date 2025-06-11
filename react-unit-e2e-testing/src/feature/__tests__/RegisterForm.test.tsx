@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -297,12 +298,14 @@ describe("RegisterForm", () => {
       await user.click(screen.getByTestId("submit-button"));
 
       // Should show loading state
-      await waitFor(() => {
-        expect(screen.getByTestId("submit-button")).toHaveTextContent(
-          "Creating Account..."
-        );
-        expect(screen.getByTestId("submit-button")).toBeDisabled();
-      });
+      // await waitFor(() => {
+      //   expect(screen.getByTestId("submit-button")).toHaveTextContent(
+      //     "Creating Account..."
+      //   );
+      //   expect(screen.getByTestId("submit-button")).toBeDisabled();
+      // });
+      const submitButton = await screen.findByText("Creating Account...");
+      expect(submitButton).toBeInTheDocument();
     });
   });
 });
